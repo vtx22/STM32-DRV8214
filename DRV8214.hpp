@@ -39,6 +39,15 @@ public:
     float get_motor_voltage();
     float get_motor_current();
 
+    void enable_outputs(bool enable);
+    void enable_ovp(bool enable);
+    void enable_stall_detection(bool enable);
+    void enable_vs_filter(bool enable);
+    void enable_voltage_gain(bool gain);
+    void reset_ripple_count();
+    void clear_faults();
+    void enable_duty_control(bool enable);
+
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
     void _write_reg_8(DRV8214_REG reg, uint8_t value);
