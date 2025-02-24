@@ -39,6 +39,9 @@ public:
 
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
+    void _write_reg_8(DRV8214_REG reg, uint8_t value);
+
+    void _set_bit(DRV8214_REG reg, uint8_t mask, bool value);
 
     float _max_current = 4.f;
 

@@ -36,3 +36,24 @@ uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));
 }
+
+void DRV8214::_write_reg_8(DRV8214_REG reg, uint8_t value)
+{
+    write_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg), value);
+}
+
+void DRV8214::_set_bit(DRV8214_REG reg, uint8_t mask, bool value)
+{
+    uint8_t reg_value = _read_reg8(reg);
+
+    if (value)
+    {
+        reg_value |= mask;
+    }
+    else
+    {
+        reg_value &= ~mask;
+    }
+
+    _write_reg_8(reg, reg_value);
+}
