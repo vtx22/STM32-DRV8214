@@ -30,9 +30,13 @@ public:
     DRV8214(I2C_HandleTypeDef *hi2c, uint8_t address);
 
     uint8_t get_fault();
+    float get_motor_voltage();
+    float get_motor_current();
 
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
+
+    float _max_current = 4.f;
 
     I2C_HandleTypeDef *_hi2c;
     uint8_t _address;
