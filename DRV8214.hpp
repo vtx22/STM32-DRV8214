@@ -30,6 +30,10 @@ public:
     DRV8214(I2C_HandleTypeDef *hi2c, uint8_t address);
 
     uint8_t get_fault();
+
+    uint8_t get_estimated_speed();
+    uint16_t get_ripple_count();
+
     float get_motor_voltage();
     float get_motor_current();
 
