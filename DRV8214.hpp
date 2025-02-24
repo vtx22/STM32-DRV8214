@@ -25,7 +25,9 @@
 class DRV8214
 {
 public:
-    DRV8214();
+    DRV8214(I2C_HandleTypeDef *hi2c, uint8_t address);
 
 private:
+    I2C_HandleTypeDef *_hi2c;
+    uint8_t _address;
 };
