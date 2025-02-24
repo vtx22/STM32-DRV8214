@@ -3,6 +3,8 @@
 #include <cstdint>
 #include "I2C.h"
 
+#include "DRV8214_reg.hpp"
+
 // Use the following flags for compiling the right library, e.g.: -D STM32F1
 #if defined(STM32F0)
 #include "stm32f0xx_hal.h"
@@ -27,7 +29,11 @@ class DRV8214
 public:
     DRV8214(I2C_HandleTypeDef *hi2c, uint8_t address);
 
+    uint8_t get_fault();
+
 private:
+    uint8_t _read_reg8(DRV8214_REG reg);
+
     I2C_HandleTypeDef *_hi2c;
     uint8_t _address;
 };
