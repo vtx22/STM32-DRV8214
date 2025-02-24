@@ -34,6 +34,8 @@ public:
     uint8_t get_estimated_speed();
     uint16_t get_ripple_count();
 
+    float get_internal_duty_cycle();
+
     float get_motor_voltage();
     float get_motor_current();
 
