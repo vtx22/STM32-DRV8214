@@ -196,6 +196,20 @@ void DRV8214::set_regulation_control(DRV8214_REG_CTRL mode)
     _write_reg_8(DRV8214_REG::REG_CTRL0, reg);
 }
 
+void DRV8214::set_pwm_frequency(DRV8214_PWM_FREQ freq)
+{
+    _set_bit(DRV8214_REG::REG_CTRL0, static_cast<uint8_t>(DRV8214_REG_CTRL0::PWM_FREQ), static_cast<bool>(freq));
+}
+
+void DRV8214::set_w_scale(DRC8214_W_SCALE scale)
+{
+    uint8_t reg = _read_reg8(DRV8214_REG::REG_CTRL0);
+
+    reg &= static_cast<uint8_t>(scale) + ~static_cast<uint8_t>(DRV8214_REG_CTRL0::W_SCALE);
+
+    _write_reg_8(DRV8214_REG::REG_CTRL0, reg);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));

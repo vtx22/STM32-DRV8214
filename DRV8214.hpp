@@ -85,6 +85,8 @@ public:
 
     void set_soft_start(bool enable);
     void set_regulation_control(DRV8214_REG_CTRL mode);
+    void set_pwm_frequency(DRV8214_PWM_FREQ freq);
+    void set_w_scale(DRC8214_W_SCALE scale);
 
 private:
     uint8_t _read_reg8(DRV8214_REG reg);

@@ -183,3 +183,17 @@ enum class DRV8214_RC_REP : uint8_t
     RC_REP_3 = 0b10, // Like RC_REP_1, but nFAULT is pulled low when RC_CNT reaches maximum
     RC_REP_4 = 0b11, // Like RC_REP_2, but nFAULT is pulled low for 50us when RC_CNT reaches maximum
 };
+
+enum class DRV8214_PWM_FREQ : bool
+{
+    FREQ_50K = false, // 50kHz internal bridge PWM frequency (I2C_BC has to be 1)
+    FREQ_25K = true,  // 25kHz internal bridge PWM frequency (I2C_BC has to be 1)
+};
+
+enum class DRC8214_W_SCALE : uint8_t
+{
+    W_SCALE_16 = 0b00,
+    W_SCALE_32 = 0b01,
+    W_SCALE_64 = 0b10,
+    W_SCALE_128 = 0b11,
+};
