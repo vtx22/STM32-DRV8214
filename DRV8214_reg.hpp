@@ -144,3 +144,15 @@ enum class DRV8214_SMODE : uint8_t
     LATCHED_DISABLE = 0b00, // Disables OUTx pins when a stall occurs, STALL bit is set to 1
     INDICATION_ONLY = 0b01, // OUTx pins remain active when a stall occurs, STALL bit is set to 1
 };
+
+enum class DRV8214_OCP_MODE : bool
+{
+    LATCH_OFF = false, // Device is latched of in case of overcurrent event, clear using CLR_FLT
+    AUTO_RETRY = true, // Device tries to restart after t_retry
+};
+
+enum class DRV8214_TSD_MODE : bool
+{
+    LATCH_OFF = false, // Device is latched of in case of overtemperature event
+    AUTO_RETRY = true, // Device tries to restart when temperature is below hysteresis threshold
+};

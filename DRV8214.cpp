@@ -112,6 +112,37 @@ void DRV8214::set_stall_mode(DRV8214_SMODE mode)
     _set_bit(DRV8214_REG::CONFIG3, static_cast<uint8_t>(DRV8214_CONFIG3::SMODE), static_cast<bool>(mode));
 }
 
+void DRV8214::set_vref_internal(bool internal)
+{
+    _set_bit(DRV8214_REG::CONFIG3, static_cast<uint8_t>(DRV8214_CONFIG3::INT_VREF), internal);
+}
+
+/*
+@param tblank Blanking time: 0=1.8us, 1=1us
+*/
+void DRV8214::set_current_sense_tblank(bool tblank)
+{
+    _set_bit(DRV8214_REG::CONFIG3, static_cast<uint8_t>(DRV8214_CONFIG3::TBLANK), tblank);
+}
+
+/*
+@param deglitch Deglitch time: 0=2us, 1=1us
+*/
+void DRV8214::set_deglitch_time(bool deglitch)
+{
+    _set_bit(DRV8214_REG::CONFIG3, static_cast<uint8_t>(DRV8214_CONFIG3::TDEG), deglitch);
+}
+
+void DRV8214::set_ocp_mode(DRV8214_OCP_MODE mode)
+{
+    _set_bit(DRV8214_REG::CONFIG3, static_cast<uint8_t>(DRV8214_CONFIG3::OCP_MODE), static_cast<bool>(mode));
+}
+
+void DRV8214::set_tsd_mode(DRV8214_TSD_MODE mode)
+{
+    _set_bit(DRV8214_REG::CONFIG3, static_cast<uint8_t>(DRV8214_CONFIG3::TSD_MODE), static_cast<bool>(mode));
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));

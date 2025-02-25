@@ -52,8 +52,15 @@ public:
 
     void set_inrush_time_blanking(float seconds);
 
+    // CONFIG 3
+
     void set_regulation_mode(DRV8214_IMODE mode);
     void set_stall_mode(DRV8214_SMODE mode);
+    void set_vref_internal(bool internal);
+    void set_current_sense_tblank(bool tblank);
+    void set_deglitch_time(bool deglitch);
+    void set_ocp_mode(DRV8214_OCP_MODE mode);
+    void set_tsd_mode(DRV8214_TSD_MODE mode);
 
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
