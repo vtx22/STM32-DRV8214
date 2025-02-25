@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstdint>
+#include <cmath>
+
 #include "I2C.h"
 
 #include "DRV8214_reg.hpp"
@@ -47,6 +49,8 @@ public:
     void reset_ripple_count();
     void clear_faults();
     void enable_duty_control(bool enable);
+
+    void set_inrush_time_blanking(float seconds);
 
 private:
     uint8_t _read_reg8(DRV8214_REG reg);

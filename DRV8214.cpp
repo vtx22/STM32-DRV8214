@@ -77,6 +77,27 @@ void DRV8214::enable_duty_control(bool enable)
     _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DR8214_CONFIG0::DUTY_CTRL), enable);
 }
 
+/*
+@param seconds Inrush time blanking in seconds. Valid range is 0.005s to 6.7s.
+*/
+void DRV8214::set_inrush_time_blanking(float seconds)
+{
+    if (seconds < 0.005f)
+    {
+        seconds = 0.005f;
+    }
+    if (seconds > 6.7f)
+    {
+        seconds = 6.7f;
+    }
+
+    float reg_float = round((seconds - 0.005f) / (6.7f - 0.005f) * 0xFFFF);
+    uint16_t reg_value = static_cast<uint16_t>(reg_float);
+
+    _write_reg_8(DRV8214_REG::CONFIG1, reg_value >> 8);
+    _write_reg_8(DRV8214_REG::CONFIG2, reg_value & 0xFF);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));
