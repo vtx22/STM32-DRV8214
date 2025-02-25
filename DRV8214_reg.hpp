@@ -190,10 +190,18 @@ enum class DRV8214_PWM_FREQ : bool
     FREQ_25K = true,  // 25kHz internal bridge PWM frequency (I2C_BC has to be 1)
 };
 
-enum class DRC8214_W_SCALE : uint8_t
+enum class DRV8214_W_SCALE : uint8_t
 {
     W_SCALE_16 = 0b00,
     W_SCALE_32 = 0b01,
     W_SCALE_64 = 0b10,
     W_SCALE_128 = 0b11,
+};
+
+enum class DRV8214_OUT_FLT_CUTOFF : uint8_t
+{
+    CO_250HZ = 0b00,
+    CO_500HZ = 0b01,
+    CO_750HZ = 0b10,
+    CO_1000HZ = 0b11,
 };

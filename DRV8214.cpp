@@ -201,13 +201,46 @@ void DRV8214::set_pwm_frequency(DRV8214_PWM_FREQ freq)
     _set_bit(DRV8214_REG::REG_CTRL0, static_cast<uint8_t>(DRV8214_REG_CTRL0::PWM_FREQ), static_cast<bool>(freq));
 }
 
-void DRV8214::set_w_scale(DRC8214_W_SCALE scale)
+void DRV8214::set_w_scale(DRV8214_W_SCALE scale)
 {
     uint8_t reg = _read_reg8(DRV8214_REG::REG_CTRL0);
 
     reg &= static_cast<uint8_t>(scale) + ~static_cast<uint8_t>(DRV8214_REG_CTRL0::W_SCALE);
 
     _write_reg_8(DRV8214_REG::REG_CTRL0, reg);
+}
+
+void DRV8214::set_target_voltage_speed(uint8_t target)
+{
+    _write_reg_8(DRV8214_REG::REG_CTRL1, target);
+}
+
+void DRV8214::set_output_filter_coutoff(DRV8214_OUT_FLT_CUTOFF frequency)
+{
+    uint8_t reg = _read_reg8(DRV8214_REG::REG_CTRL2);
+
+    reg &= static_cast<uint8_t>(frequency) + ~static_cast<uint8_t>(DRV8214_REG_CTRL2::OUT_FLT);
+
+    _write_reg_8(DRV8214_REG::REG_CTRL2, reg);
+}
+
+void DRV8214::set_external_duty_cycle(float percentage)
+{
+    if (percentage < 0.0f)
+    {
+        percentage = 0.0f;
+    }
+    if (percentage > 100.0f)
+    {
+        percentage = 100.0f;
+    }
+
+    uint8_t duty = static_cast<uint8_t>(round(percentage * 0b00111111 / 100.0f));
+
+    uint8_t reg = _read_reg8(DRV8214_REG::REG_CTRL2) & 0b11000000;
+    reg |= duty;
+
+    _write_reg_8(DRV8214_REG::REG_CTRL2, reg);
 }
 
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
