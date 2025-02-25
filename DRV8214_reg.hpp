@@ -156,3 +156,23 @@ enum class DRV8214_TSD_MODE : bool
     LATCH_OFF = false, // Device is latched of in case of overtemperature event
     AUTO_RETRY = true, // Device tries to restart when temperature is below hysteresis threshold
 };
+
+enum class DRV8214_PMODE : bool
+{
+    PH_EN = false, // Phase/Enable input mode
+    PWM = true,    // PWM input mode
+};
+
+enum class DRV8214_BRIDGE_CONTROL : bool
+{
+    INX_PINS = false, // IN1 and IN2 pins are used for control
+    I2C = true,       // I2C is used for control
+};
+
+enum class DRV8214_RC_REP : uint8_t
+{
+    RC_REP_1 = 0b00, // If RC_CNT reaches maximum, it is held there until CLR_CNT is set. No effect on nFAULT
+    RC_REP_2 = 0b01, // If RC_CNT reaches maximum, it is automatically cleared. No effect on nFAULT
+    RC_REP_3 = 0b10, // Like RC_REP_1, but nFAULT is pulled low when RC_CNT reaches maximum
+    RC_REP_4 = 0b11, // Like RC_REP_2, but nFAULT is pulled low for 50us when RC_CNT reaches maximum
+};

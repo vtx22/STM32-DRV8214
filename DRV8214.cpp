@@ -143,6 +143,45 @@ void DRV8214::set_tsd_mode(DRV8214_TSD_MODE mode)
     _set_bit(DRV8214_REG::CONFIG3, static_cast<uint8_t>(DRV8214_CONFIG3::TSD_MODE), static_cast<bool>(mode));
 }
 
+void DRV8214::set_rc_fault_reporting(DRV8214_RC_REP mode)
+{
+    uint8_t reg = _read_reg8(DRV8214_REG::CONFIG4);
+
+    reg &= (static_cast<uint8_t>(mode) << 6) + ~static_cast<uint8_t>(DRV8214_CONFIG4::RC_REP);
+
+    _write_reg_8(DRV8214_REG::CONFIG4, reg);
+}
+
+void DRV8214::set_stall_fault_reporting(bool on)
+{
+    _set_bit(DRV8214_REG::CONFIG4, static_cast<uint8_t>(DRV8214_CONFIG4::STALL_REP), on);
+}
+
+void DRV8214::set_cbc_fault_reporting(bool on)
+{
+    _set_bit(DRV8214_REG::CONFIG4, static_cast<uint8_t>(DRV8214_CONFIG4::CBC_REP), on);
+}
+
+void DRV8214::set_pmode(DRV8214_PMODE mode)
+{
+    _set_bit(DRV8214_REG::CONFIG4, static_cast<uint8_t>(DRV8214_CONFIG4::PMODE), static_cast<bool>(mode));
+}
+
+void DRV8214::set_control_interface(DRV8214_BRIDGE_CONTROL mode)
+{
+    _set_bit(DRV8214_REG::CONFIG4, static_cast<uint8_t>(DRV8214_CONFIG4::I2C_BC), static_cast<bool>(mode));
+}
+
+void DRV8214::set_i2c_en_in1(bool state)
+{
+    _set_bit(DRV8214_REG::CONFIG4, static_cast<uint8_t>(DRV8214_CONFIG4::I2C_EN_IN1), state);
+}
+
+void DRV8214::set_i2c_ph_in2(bool state)
+{
+    _set_bit(DRV8214_REG::CONFIG4, static_cast<uint8_t>(DRV8214_CONFIG4::I2C_PH_IN2), state);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));

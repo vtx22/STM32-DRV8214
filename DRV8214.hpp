@@ -52,7 +52,7 @@ public:
 
     void set_inrush_time_blanking(float seconds);
 
-    // CONFIG 3
+    // === CONFIG3 === //
 
     void set_regulation_mode(DRV8214_IMODE mode);
     void set_stall_mode(DRV8214_SMODE mode);
@@ -61,6 +61,16 @@ public:
     void set_deglitch_time(bool deglitch);
     void set_ocp_mode(DRV8214_OCP_MODE mode);
     void set_tsd_mode(DRV8214_TSD_MODE mode);
+
+    // === CONFIG4 === //
+
+    void set_rc_fault_reporting(DRV8214_RC_REP mode);
+    void set_stall_fault_reporting(bool on);
+    void set_cbc_fault_reporting(bool on);
+    void set_pmode(DRV8214_PMODE mode);
+    void set_control_interface(DRV8214_BRIDGE_CONTROL mode);
+    void set_i2c_en_in1(bool state);
+    void set_i2c_ph_in2(bool state);
 
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
