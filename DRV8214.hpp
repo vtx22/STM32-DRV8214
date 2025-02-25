@@ -119,6 +119,14 @@ public:
 
     void set_inv_r(uint8_t inv_r);
 
+    // === RC_CTRL4 === //
+
+    void set_kmc(uint8_t kmc);
+
+    // === RC_CTRL5 === //
+
+    void set_bandpass_filter_damping(uint8_t k);
+
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
     void _write_reg_8(DRV8214_REG reg, uint8_t value);

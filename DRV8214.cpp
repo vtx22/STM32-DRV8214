@@ -330,6 +330,23 @@ void DRV8214::set_inv_r(uint8_t inv_r)
     _write_reg_8(DRV8214_REG::RC_CTRL3, inv_r);
 }
 
+void DRV8214::set_kmc(uint8_t kmc)
+{
+    _write_reg_8(DRV8214_REG::RC_CTRL4, kmc);
+}
+
+void DRV8214::set_bandpass_filter_damping(uint8_t k)
+{
+    if (k > 0b1111)
+    {
+        k = 0b1111;
+    }
+
+    k = (k << 4);
+
+    _write_reg_8(DRV8214_REG::RC_CTRL5, k);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));
