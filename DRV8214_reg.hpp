@@ -138,3 +138,9 @@ enum class DRV8214_IMODE : uint8_t
     SPEED_REGULATION = 0b10,
     VOLTAGE_REGULATION = 0b11,
 };
+
+enum class DRV8214_SMODE : uint8_t
+{
+    LATCHED_DISABLE = 0b00, // Disables OUTx pins when a stall occurs, STALL bit is set to 1
+    INDICATION_ONLY = 0b01, // OUTx pins remain active when a stall occurs, STALL bit is set to 1
+};

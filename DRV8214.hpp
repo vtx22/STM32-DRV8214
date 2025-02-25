@@ -53,6 +53,7 @@ public:
     void set_inrush_time_blanking(float seconds);
 
     void set_regulation_mode(DRV8214_IMODE mode);
+    void set_stall_mode(DRV8214_SMODE mode);
 
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
