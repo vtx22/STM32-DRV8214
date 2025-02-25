@@ -223,3 +223,27 @@ enum class DRV8214_CUR_GAIN : uint8_t
     GAIN_250MA = 0b100,
     GAIN_125MA = 0b101,
 };
+
+enum class DRV8214_INV_R_SCALE : uint8_t
+{
+    SCALE_2 = 0b00,
+    SCALE_64 = 0b01,
+    SCALE_1024 = 0b10,
+    SCALE_8192 = 0b11,
+};
+
+enum class DRV8214_KMC_SCALE : uint8_t
+{
+    SCALE_24_2E8 = 0b00,
+    SCALE_24_2E9 = 0b01,
+    SCALE_24_2E12 = 0b10,
+    SCALE_24_2E13 = 0b11,
+};
+
+enum class DRV8214_RC_THR_SCALE : uint8_t
+{
+    SCALE_2 = 0b00,
+    SCALE_8 = 0b01,
+    SCALE_16 = 0b10,
+    SCALE_64 = 0b11,
+};
