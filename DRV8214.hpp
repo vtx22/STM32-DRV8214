@@ -82,6 +82,8 @@ public:
     void set_i2c_ph_in2(bool state);
 
     // === REG_CTRL0 === //
+    void set_soft_start(bool enable);
+    
 
 private:
     uint8_t _read_reg8(DRV8214_REG reg);

@@ -182,6 +182,11 @@ void DRV8214::set_i2c_ph_in2(bool state)
     _set_bit(DRV8214_REG::CONFIG4, static_cast<uint8_t>(DRV8214_CONFIG4::I2C_PH_IN2), state);
 }
 
+void DRV8214::set_soft_start(bool enable)
+{
+    _set_bit(DRV8214_REG::REG_CTRL0, static_cast<uint8_t>(DRV8214_REG_CTRL0::EN_SS), enable);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));
