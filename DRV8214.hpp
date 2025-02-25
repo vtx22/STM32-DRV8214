@@ -115,6 +115,10 @@ public:
     void set_kmc_scale(DRV8214_KMC_SCALE scale);
     void set_rc_thr_scale(DRV8214_RC_THR_SCALE scale);
 
+    // === RC_CTRL3 === //
+
+    void set_inv_r(uint8_t inv_r);
+
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
     void _write_reg_8(DRV8214_REG reg, uint8_t value);

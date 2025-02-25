@@ -320,6 +320,16 @@ void DRV8214::set_rc_thr_scale(DRV8214_RC_THR_SCALE scale)
     _write_reg_8(DRV8214_REG::RC_CTRL2, reg);
 }
 
+void DRV8214::set_inv_r(uint8_t inv_r)
+{
+    if (inv_r == 0)
+    {
+        return;
+    }
+
+    _write_reg_8(DRV8214_REG::RC_CTRL3, inv_r);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));
