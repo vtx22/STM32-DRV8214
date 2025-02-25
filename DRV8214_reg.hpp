@@ -133,10 +133,17 @@ enum class DRV8214_RC_CTRL8 : uint8_t
 
 enum class DRV8214_IMODE : uint8_t
 {
-    FIXED_OFF_TIME = 0b00,
-    CYCLE_BY_CYCLE = 0b01,
-    SPEED_REGULATION = 0b10,
-    VOLTAGE_REGULATION = 0b11,
+    OFF = 0b00,             // No current regulation at any time
+    STALL_DEPENDANT = 0b01, // Current regulation at all times if EN_STALL=0. If EN_STALL=1, current is only regulated during t_inrush.
+    ALWAYS_ON = 0b10,       // Current regulation at all times
+};
+
+enum class DRV8214_REG_CTRL : uint8_t
+{
+    FIXED_OFF_TIME = 0b00,     // Fixed off time current regulation
+    CYCLE_BY_CYCLE = 0b01,     // Cycle by cycle current regulation
+    SPEED_REGULATION = 0b10,   // Motor speed regulation (EN_RC has to be 1)
+    VOLTAGE_REGULATION = 0b11, // Motor voltage regulation
 };
 
 enum class DRV8214_SMODE : uint8_t
