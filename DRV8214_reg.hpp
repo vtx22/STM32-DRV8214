@@ -41,7 +41,7 @@ enum class DRV8214_FAULT : uint8_t
     CNT_DONE = (1 << 0),
 };
 
-enum class DR8214_CONFIG0 : uint8_t
+enum class DRV8214_CONFIG0 : uint8_t
 {
     EN_OUT = (1 << 7),
     EN_OVP = (1 << 6),
@@ -53,7 +53,7 @@ enum class DR8214_CONFIG0 : uint8_t
     DUTY_CTRL = (1 << 0),
 };
 
-enum class DR8214_CONFIG3 : uint8_t
+enum class DRV8214_CONFIG3 : uint8_t
 {
     IMODE = (1 << 7) + (1 << 6),
     SMODE = (1 << 5),
@@ -64,7 +64,7 @@ enum class DR8214_CONFIG3 : uint8_t
     TSD_MODE = (1 << 0),
 };
 
-enum class DR8214_CONFIG4 : uint8_t
+enum class DRV8214_CONFIG4 : uint8_t
 {
     RC_REP = (1 << 7) + (1 << 6),
     STALL_REP = (1 << 5),
@@ -75,7 +75,7 @@ enum class DR8214_CONFIG4 : uint8_t
     I2C_PH_IN2 = (1 << 0),
 };
 
-enum class DR8214_REG_CTRL0 : uint8_t
+enum class DRV8214_REG_CTRL0 : uint8_t
 {
     EN_SS = (1 << 5),
     REG_CNTRL = (1 << 4) + (1 << 3),
@@ -83,13 +83,13 @@ enum class DR8214_REG_CTRL0 : uint8_t
     W_SCALE = (1 << 1) + (1 << 0),
 };
 
-enum class DR8214_REG_CTRL2 : uint8_t
+enum class DRV8214_REG_CTRL2 : uint8_t
 {
     OUT_FLT = (1 << 7) + (1 << 6),
     EXT_DUTY = 0b00111111,
 };
 
-enum class DR8214_RC_CTRL0 : uint8_t
+enum class DRV8214_RC_CTRL0 : uint8_t
 {
     EN_RC = (1 << 7),
     DIS_EC = (1 << 6),
@@ -98,7 +98,7 @@ enum class DR8214_RC_CTRL0 : uint8_t
     CS_GAIN_SEL = 0b111,
 };
 
-enum class DR8214_RC_CTRL2 : uint8_t
+enum class DRV8214_RC_CTRL2 : uint8_t
 {
     INV_R_SCALE = (1 << 7) + (1 << 6),
     KMC_SCALE = (1 << 5) + (1 << 4),
@@ -106,12 +106,12 @@ enum class DR8214_RC_CTRL2 : uint8_t
     RC_THR_9_8 = 0b11,
 };
 
-enum class DR8214_RC_CTRL5 : uint8_t
+enum class DRV8214_RC_CTRL5 : uint8_t
 {
     FLT_K = 0b1111000,
 };
 
-enum class DR8214_RC_CTRL6 : uint8_t
+enum class DRV8214_RC_CTRL6 : uint8_t
 {
     EC_PULSE_DIS = (1 << 7),
     T_MECH_FLT = (1 << 6) + (1 << 5) + (1 << 4),
@@ -119,13 +119,13 @@ enum class DR8214_RC_CTRL6 : uint8_t
     EC_MISS_PER = (1 << 1) + (1 << 0),
 };
 
-enum class DR8214_RC_CTRL7 : uint8_t
+enum class DRV8214_RC_CTRL7 : uint8_t
 {
     KP_DIV = 0b11100000,
     KP = 0b00011111,
 };
 
-enum class DR8214_RC_CTRL8 : uint8_t
+enum class DRV8214_RC_CTRL8 : uint8_t
 {
     KI_DIV = 0b11100000,
     KI = 0b00011111,

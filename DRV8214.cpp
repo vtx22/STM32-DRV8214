@@ -39,42 +39,42 @@ float DRV8214::get_internal_duty_cycle()
 
 void DRV8214::enable_outputs(bool enable)
 {
-    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DR8214_CONFIG0::EN_OUT), enable);
+    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DRV8214_CONFIG0::EN_OUT), enable);
 }
 
 void DRV8214::enable_ovp(bool enable)
 {
-    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DR8214_CONFIG0::EN_OVP), enable);
+    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DRV8214_CONFIG0::EN_OVP), enable);
 }
 
 void DRV8214::enable_stall_detection(bool enable)
 {
-    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DR8214_CONFIG0::EN_STALL), enable);
+    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DRV8214_CONFIG0::EN_STALL), enable);
 }
 
 void DRV8214::enable_vs_filter(bool enable)
 {
-    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DR8214_CONFIG0::VSNS_SEL), enable);
+    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DRV8214_CONFIG0::VSNS_SEL), enable);
 }
 
 void DRV8214::enable_voltage_gain(bool gain)
 {
-    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DR8214_CONFIG0::VM_GAIN_SEL), gain);
+    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DRV8214_CONFIG0::VM_GAIN_SEL), gain);
 }
 
 void DRV8214::reset_ripple_count()
 {
-    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DR8214_CONFIG0::CLR_CNT), true);
+    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DRV8214_CONFIG0::CLR_CNT), true);
 }
 
 void DRV8214::clear_faults()
 {
-    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DR8214_CONFIG0::CLR_FLT), true);
+    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DRV8214_CONFIG0::CLR_FLT), true);
 }
 
 void DRV8214::enable_duty_control(bool enable)
 {
-    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DR8214_CONFIG0::DUTY_CTRL), enable);
+    _set_bit(DRV8214_REG::CONFIG0, static_cast<uint8_t>(DRV8214_CONFIG0::DUTY_CTRL), enable);
 }
 
 /*
