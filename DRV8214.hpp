@@ -102,7 +102,7 @@ public:
     void enable_ripple_counting(bool enable);
     void enable_error_correction_module(bool enable);
     void enable_rc_threshold_hiz(bool enable);
-    void set_filter_input_scalign(DRV8214_FLT_GAIN gain);
+    void set_filter_input_scaling(DRV8214_FLT_GAIN gain);
     void set_current_gain(DRV8214_CUR_GAIN gain);
 
 private:
