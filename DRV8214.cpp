@@ -276,6 +276,23 @@ void DRV8214::set_current_gain(DRV8214_CUR_GAIN gain)
     _write_reg_8(DRV8214_REG::RC_CTRL0, reg);
 }
 
+void DRV8214::set_ripple_count_threshold(uint16_t threshold)
+{
+    // Threshold is 10 bits
+    if (threshold > 0x3FF)
+    {
+        threshold = 0x3FF;
+    }
+
+    _write_reg_8(DRV8214_REG::RC_CTRL1, threshold & 0xFF);
+
+    uint8_t reg = _read_reg8(DRV8214_REG::RC_CTRL2);
+
+    reg &= (threshold >> 8) + ~0b11;
+
+    _write_reg_8(DRV8214_REG::RC_CTRL2, reg);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));

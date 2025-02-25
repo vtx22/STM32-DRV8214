@@ -105,6 +105,10 @@ public:
     void set_filter_input_scaling(DRV8214_FLT_GAIN gain);
     void set_current_gain(DRV8214_CUR_GAIN gain);
 
+    // === RC_CTRL1 === //
+
+    void set_ripple_count_threshold(uint16_t threshold);
+
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
     void _write_reg_8(DRV8214_REG reg, uint8_t value);
