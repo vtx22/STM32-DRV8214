@@ -250,7 +250,7 @@ void DRV8214::enable_ripple_counting(bool enable)
 
 void DRV8214::enable_error_correction_module(bool enable)
 {
-    _set_bit(DRV8214_REG::RC_CTRL0, static_cast<uint8_t>(DRV8214_RC_CTRL0::DIS_EC), enable);
+    _set_bit(DRV8214_REG::RC_CTRL0, static_cast<uint8_t>(DRV8214_RC_CTRL0::DIS_EC), !enable);
 }
 
 void DRV8214::enable_rc_threshold_hiz(bool enable)
