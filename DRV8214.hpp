@@ -63,7 +63,7 @@ public:
 
     // === CONFIG3 === //
 
-    void set_regulation_mode(DRV8214_IMODE mode);
+    void set_current_regulation_mode(DRV8214_IMODE mode);
     void set_stall_mode(DRV8214_SMODE mode);
     void set_vref_internal(bool internal);
     void set_current_sense_tblank(bool tblank);
@@ -82,8 +82,9 @@ public:
     void set_i2c_ph_in2(bool state);
 
     // === REG_CTRL0 === //
+
     void set_soft_start(bool enable);
-    
+    void set_regulation_control(DRV8214_REG_CTRL mode);
 
 private:
     uint8_t _read_reg8(DRV8214_REG reg);

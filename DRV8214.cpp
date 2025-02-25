@@ -98,7 +98,7 @@ void DRV8214::set_inrush_time_blanking(float seconds)
     _write_reg_8(DRV8214_REG::CONFIG2, reg_value & 0xFF);
 }
 
-void DRV8214::set_regulation_mode(DRV8214_IMODE mode)
+void DRV8214::set_current_regulation_mode(DRV8214_IMODE mode)
 {
     uint8_t reg = _read_reg8(DRV8214_REG::CONFIG3);
 
@@ -185,6 +185,15 @@ void DRV8214::set_i2c_ph_in2(bool state)
 void DRV8214::set_soft_start(bool enable)
 {
     _set_bit(DRV8214_REG::REG_CTRL0, static_cast<uint8_t>(DRV8214_REG_CTRL0::EN_SS), enable);
+}
+
+void DRV8214::set_regulation_control(DRV8214_REG_CTRL mode)
+{
+    uint8_t reg = _read_reg8(DRV8214_REG::REG_CTRL0);
+
+    reg &= (static_cast<uint8_t>(mode) << 3) + ~static_cast<uint8_t>(DRV8214_REG_CTRL0::REG_CNTRL);
+
+    _write_reg_8(DRV8214_REG::REG_CTRL0, reg);
 }
 
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
