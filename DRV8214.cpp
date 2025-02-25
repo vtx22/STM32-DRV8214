@@ -347,6 +347,43 @@ void DRV8214::set_bandpass_filter_damping(uint8_t k)
     _write_reg_8(DRV8214_REG::RC_CTRL5, k);
 }
 
+void DRV8214::enable_error_correction_pulses(bool enable)
+{
+    _set_bit(DRV8214_REG::RC_CTRL6, static_cast<uint8_t>(DRV8214_RC_CTRL6::EC_PULSE_DIS), !enable);
+}
+
+void DRV8214::set_filter_t_mech(uint8_t t_mech)
+{
+    if (t_mech > 0b111)
+    {
+        t_mech = 0b111;
+    }
+
+    t_mech = (t_mech << 4);
+
+    uint8_t reg = _read_reg8(DRV8214_REG::RC_CTRL6);
+
+    reg &= t_mech + ~0b01111000;
+}
+
+void DRV8214::set_ec_false_percentage(DRV8214_EC_PER percentage)
+{
+    uint8_t reg = _read_reg8(DRV8214_REG::RC_CTRL6);
+
+    reg &= (static_cast<uint8_t>(percentage) << 2) + ~0b1100;
+
+    _write_reg_8(DRV8214_REG::RC_CTRL6, reg);
+}
+
+void DRV8214::set_ec_miss_percentage(DRV8214_EC_PER percentage)
+{
+    uint8_t reg = _read_reg8(DRV8214_REG::RC_CTRL6);
+
+    reg &= static_cast<uint8_t>(percentage) + ~0b11;
+
+    _write_reg_8(DRV8214_REG::RC_CTRL6, reg);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));

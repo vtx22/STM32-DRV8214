@@ -127,6 +127,13 @@ public:
 
     void set_bandpass_filter_damping(uint8_t k);
 
+    // === RC_CTRL6 === //
+
+    void enable_error_correction_pulses(bool enable);
+    void set_filter_t_mech(uint8_t t_mech);
+    void set_ec_false_percentage(DRV8214_EC_PER percentage);
+    void set_ec_miss_percentage(DRV8214_EC_PER percentage);
+
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
     void _write_reg_8(DRV8214_REG reg, uint8_t value);

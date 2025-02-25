@@ -247,3 +247,11 @@ enum class DRV8214_RC_THR_SCALE : uint8_t
     SCALE_16 = 0b10,
     SCALE_64 = 0b11,
 };
+
+enum class DRV8214_EC_PER : uint8_t
+{
+    PER_20 = 0b00,
+    PER_30 = 0b01,
+    PER_40 = 0b10,
+    PER_50 = 0b11,
+};
