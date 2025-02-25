@@ -130,3 +130,11 @@ enum class DRV8214_RC_CTRL8 : uint8_t
     KI_DIV = 0b11100000,
     KI = 0b00011111,
 };
+
+enum class DRV8214_IMODE : uint8_t
+{
+    FIXED_OFF_TIME = 0b00,
+    CYCLE_BY_CYCLE = 0b01,
+    SPEED_REGULATION = 0b10,
+    VOLTAGE_REGULATION = 0b11,
+};

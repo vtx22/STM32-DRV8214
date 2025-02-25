@@ -98,6 +98,15 @@ void DRV8214::set_inrush_time_blanking(float seconds)
     _write_reg_8(DRV8214_REG::CONFIG2, reg_value & 0xFF);
 }
 
+void DRV8214::set_regulation_mode(DRV8214_IMODE mode)
+{
+    uint8_t reg = _read_reg8(DRV8214_REG::CONFIG3);
+
+    reg &= (static_cast<uint8_t>(mode) << 6) + ~static_cast<uint8_t>(DRV8214_CONFIG3::IMODE);
+
+    _write_reg_8(DRV8214_REG::CONFIG3, reg);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));
