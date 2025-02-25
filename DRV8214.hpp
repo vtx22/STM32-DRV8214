@@ -31,15 +31,22 @@ class DRV8214
 public:
     DRV8214(I2C_HandleTypeDef *hi2c, uint8_t address);
 
+    // === FAULT === //
+
     uint8_t get_fault();
+
+    // === RC_STAT === //
 
     uint8_t get_estimated_speed();
     uint16_t get_ripple_count();
 
-    float get_internal_duty_cycle();
+    // === REG_STAT === //
 
     float get_motor_voltage();
     float get_motor_current();
+    float get_internal_duty_cycle();
+
+    // === CONFIG0 === //
 
     void enable_outputs(bool enable);
     void enable_ovp(bool enable);
@@ -49,6 +56,8 @@ public:
     void reset_ripple_count();
     void clear_faults();
     void enable_duty_control(bool enable);
+
+    // === CONFIG1/2 === //
 
     void set_inrush_time_blanking(float seconds);
 
@@ -71,6 +80,8 @@ public:
     void set_control_interface(DRV8214_BRIDGE_CONTROL mode);
     void set_i2c_en_in1(bool state);
     void set_i2c_ph_in2(bool state);
+
+    // === REG_CTRL0 === //
 
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
