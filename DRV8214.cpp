@@ -384,6 +384,30 @@ void DRV8214::set_ec_miss_percentage(DRV8214_EC_PER percentage)
     _write_reg_8(DRV8214_REG::RC_CTRL6, reg);
 }
 
+void DRV8214::set_pi_kp(uint8_t kp_pre_div, DRV8214_PI_DIV kp_div)
+{
+    if (kp_pre_div > 0b11111)
+    {
+        kp_pre_div = 0b11111;
+    }
+
+    uint8_t reg = kp_pre_div + (static_cast<uint8_t>(kp_div) << 5);
+
+    _write_reg_8(DRV8214_REG::RC_CTRL7, reg);
+}
+
+void DRV8214::set_pi_ki(uint8_t ki_pre_div, DRV8214_PI_DIV ki_div)
+{
+    if (ki_pre_div > 0b11111)
+    {
+        ki_pre_div = 0b11111;
+    }
+
+    uint8_t reg = ki_pre_div + (static_cast<uint8_t>(ki_div) << 5);
+
+    _write_reg_8(DRV8214_REG::RC_CTRL8, reg);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));

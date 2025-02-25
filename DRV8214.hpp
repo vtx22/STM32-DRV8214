@@ -134,6 +134,14 @@ public:
     void set_ec_false_percentage(DRV8214_EC_PER percentage);
     void set_ec_miss_percentage(DRV8214_EC_PER percentage);
 
+    // === RC_CTRL7 === //
+
+    void set_pi_kp(uint8_t kp_pre_div, DRV8214_PI_DIV kp_div);
+
+    // === RC_CTRL8 === //
+
+    void set_pi_ki(uint8_t ki_pre_div, DRV8214_PI_DIV ki_div);
+
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
     void _write_reg_8(DRV8214_REG reg, uint8_t value);

@@ -255,3 +255,14 @@ enum class DRV8214_EC_PER : uint8_t
     PER_40 = 0b10,
     PER_50 = 0b11,
 };
+
+enum class DRV8214_PI_DIV : uint8_t
+{
+    DIV_32 = 0b000,
+    DIV_64 = 0b001,
+    DIV_128 = 0b010,
+    DIV_256 = 0b011,
+    DIV_512 = 0b100,
+    DIV_16 = 0b101,
+    DIV_1 = 0b110,
+};
