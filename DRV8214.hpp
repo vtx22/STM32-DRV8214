@@ -97,6 +97,14 @@ public:
     void set_output_filter_coutoff(DRV8214_OUT_FLT_CUTOFF frequency);
     void set_external_duty_cycle(float percentage);
 
+    // === RC_CTRL0 === //
+
+    void enable_ripple_counting(bool enable);
+    void enable_error_correction_module(bool enable);
+    void enable_rc_threshold_hiz(bool enable);
+    void set_filter_input_scalign(DRV8214_FLT_GAIN gain);
+    void set_current_gain(DRV8214_CUR_GAIN gain);
+
 private:
     uint8_t _read_reg8(DRV8214_REG reg);
     void _write_reg_8(DRV8214_REG reg, uint8_t value);

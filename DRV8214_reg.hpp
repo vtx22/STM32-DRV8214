@@ -205,3 +205,21 @@ enum class DRV8214_OUT_FLT_CUTOFF : uint8_t
     CO_750HZ = 0b10,
     CO_1000HZ = 0b11,
 };
+
+enum class DRV8214_FLT_GAIN : uint8_t
+{
+    GAIN_2 = 0b00,
+    GAIN_4 = 0b01,
+    GAIN_8 = 0b10,
+    GAIN_16 = 0b11,
+};
+
+enum class DRV8214_CUR_GAIN : uint8_t
+{
+    GAIN_4A = 0b000,
+    GAIN_2A = 0b001,
+    GAIN_1A = 0b010,
+    GAIN_500MA = 0b011,
+    GAIN_250MA = 0b100,
+    GAIN_125MA = 0b101,
+};

@@ -243,6 +243,39 @@ void DRV8214::set_external_duty_cycle(float percentage)
     _write_reg_8(DRV8214_REG::REG_CTRL2, reg);
 }
 
+void DRV8214::enable_ripple_counting(bool enable)
+{
+    _set_bit(DRV8214_REG::RC_CTRL0, static_cast<uint8_t>(DRV8214_RC_CTRL0::EN_RC), enable);
+}
+
+void DRV8214::enable_error_correction_module(bool enable)
+{
+    _set_bit(DRV8214_REG::RC_CTRL0, static_cast<uint8_t>(DRV8214_RC_CTRL0::DIS_EC), enable);
+}
+
+void DRV8214::enable_rc_threshold_hiz(bool enable)
+{
+    _set_bit(DRV8214_REG::RC_CTRL0, static_cast<uint8_t>(DRV8214_RC_CTRL0::RC_HIZ), enable);
+}
+
+void DRV8214::set_filter_input_scalign(DRV8214_FLT_GAIN gain)
+{
+    uint8_t reg = _read_reg8(DRV8214_REG::RC_CTRL0);
+
+    reg &= (static_cast<uint8_t>(gain) << 3) + ~static_cast<uint8_t>(DRV8214_RC_CTRL0::FLT_GAIN_SEL);
+
+    _write_reg_8(DRV8214_REG::RC_CTRL0, reg);
+}
+
+void DRV8214::set_current_gain(DRV8214_CUR_GAIN gain)
+{
+    uint8_t reg = _read_reg8(DRV8214_REG::RC_CTRL0);
+
+    reg &= static_cast<uint8_t>(gain) + ~static_cast<uint8_t>(DRV8214_RC_CTRL0::CS_GAIN_SEL);
+
+    _write_reg_8(DRV8214_REG::RC_CTRL0, reg);
+}
+
 uint8_t DRV8214::_read_reg8(DRV8214_REG reg)
 {
     return read_i2c_reg_8(_hi2c, _address, static_cast<uint8_t>(reg));
