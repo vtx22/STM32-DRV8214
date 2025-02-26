@@ -146,10 +146,10 @@ enum class DRV8214_REG_CTRL : uint8_t
     VOLTAGE_REGULATION = 0b11, // Motor voltage regulation
 };
 
-enum class DRV8214_SMODE : uint8_t
+enum class DRV8214_SMODE : bool
 {
-    LATCHED_DISABLE = 0b00, // Disables OUTx pins when a stall occurs, STALL bit is set to 1
-    INDICATION_ONLY = 0b01, // OUTx pins remain active when a stall occurs, STALL bit is set to 1
+    LATCHED_DISABLE = false, // Disables OUTx pins when a stall occurs, STALL bit is set to 1
+    INDICATION_ONLY = true,  // OUTx pins remain active when a stall occurs, STALL bit is set to 1
 };
 
 enum class DRV8214_OCP_MODE : bool
