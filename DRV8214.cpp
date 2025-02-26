@@ -274,6 +274,28 @@ void DRV8214::set_current_gain(DRV8214_CUR_GAIN gain)
     reg &= static_cast<uint8_t>(gain) + ~static_cast<uint8_t>(DRV8214_RC_CTRL0::CS_GAIN_SEL);
 
     _write_reg_8(DRV8214_REG::RC_CTRL0, reg);
+
+    switch (gain)
+    {
+    case DRV8214_CUR_GAIN::GAIN_4A:
+        _max_current = 4.0f;
+        break;
+    case DRV8214_CUR_GAIN::GAIN_2A:
+        _max_current = 2.0f;
+        break;
+    case DRV8214_CUR_GAIN::GAIN_1A:
+        _max_current = 1.0f;
+        break;
+    case DRV8214_CUR_GAIN::GAIN_500MA:
+        _max_current = 0.5f;
+        break;
+    case DRV8214_CUR_GAIN::GAIN_250MA:
+        _max_current = 0.25f;
+        break;
+    case DRV8214_CUR_GAIN::GAIN_125MA:
+        _max_current = 0.125f;
+        break;
+    }
 }
 
 void DRV8214::set_ripple_count_threshold(uint16_t threshold)
